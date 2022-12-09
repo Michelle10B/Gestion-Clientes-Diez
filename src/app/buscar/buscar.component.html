@@ -1,0 +1,26 @@
+<p>Buscador</p>
+<form (ngSubmit)="buscarCliente()">
+    <input name="nombre" type="text" [(ngModel)]="nombre" class="form-control" placeholder="Nombre cliente">
+    <p>{{buscarCliente()}}</p>
+</form>
+
+
+<div class="search-hero">
+ <!-- <input class="form-control" type="text" name="search" [(ngModel)]="searchText" autocomplete="off" placeholder="&#61442;  Start searching for a hero by id or name or country">-->
+</div>
+<table class="table table-striped">
+  <thead>
+  <tr>
+    <th>Id</th>
+    <th>Nombre</th>
+    <th>Apellido</th>
+  </tr>
+  </thead>
+  <tbody>
+  <!--<tr *ngFor="let hero of heroes | filter:searchText">
+    <td>{{hero.id}}</td>
+    <td>{{hero.name}}</td>
+    <td>{{hero.country}}</td>
+  </tr>-->
+  </tbody>
+</table>

@@ -1,15 +1,30 @@
-<h1>Clientes</h1>
 
-<ul class="list-unstyled mt-4 clientes">
-  <li *ngFor="let cliente of clientes" class="mb-3">
-    <button [class.selected]="cliente === selectedCliente" type="button" (click)="onSelect(cliente)">
-      <span class="id">{{cliente.id}}</span>
-      <span class="nom">{{cliente.nom}}</span>
-    </button>
-  </li>
-</ul>
-
-<app-detalles-cliente [cliente]="selectedCliente"></app-detalles-cliente>
+<div class="container-fluid mt-5">
+  <div class="row justify-content-center">
+    <div class="col-10">
+      <div class="row">
+        <div class="col-4 bg-primary">
+          <h1>Clientes</h1>
+          <ul class="list-unstyled mt-4 clientes">
+            <li *ngFor="let cliente of clientes" class="mb-3">
+              <!--<button [class.selected]="cliente === selectedCliente" type="button" (click)="onSelect(cliente)">-->
+              <button (click)="onSelect(cliente)" routerLink="/detalles/{{cliente.id}}" >
+                <span class="id">{{cliente.id}}</span>
+                <span class="nom">{{cliente.nom}}</span>
+              </button>
+            </li>
+          </ul>
+        </div>
+        <div class="col-4 bg-light">
+          <app-detalles-cliente [cliente]="selectedCliente"></app-detalles-cliente>
+        </div>
+        <div class="col-4">
+          <app-programas [cliente]="selectedCliente"></app-programas>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
 <!-- PRUEBAS -->
 <!--<table class="table">
