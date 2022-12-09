@@ -1,1 +1,38 @@
-<p>programas works!</p>
+<div class="mt-4">
+  <h2>Programas contratados</h2>
+  <div>
+    <div *ngIf="cliente">
+      <div *ngFor="let programa of programas" class="mb-3">
+        <div *ngIf="cliente.id === programa.cli.id">
+          <span>{{ programa.pro }} - </span>
+          <span [ngSwitch]="programa.pro">
+            <ng-template [ngSwitchCase]="1">
+              <span>Nóminas</span>
+            </ng-template>
+            <ng-template [ngSwitchCase]="2">
+              <span>Contabilidad</span>
+            </ng-template>
+            <ng-template [ngSwitchCase]="4">
+              <span>Facturación</span>
+            </ng-template>
+            <ng-template [ngSwitchCase]="20">
+              <span>Fiscalidad</span>
+            </ng-template>
+            <ng-template [ngSwitchCase]="18">
+              <span>ERP</span>
+            </ng-template>
+            <ng-template [ngSwitchCase]="180">
+              <span>DIEZBank</span>
+            </ng-template>
+            <ng-template [ngSwitchCase]="170">
+              <span>DIEZFac</span>
+            </ng-template>
+            <ng-template *ngSwitchDefault>
+              <span>no selected</span>
+            </ng-template>
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

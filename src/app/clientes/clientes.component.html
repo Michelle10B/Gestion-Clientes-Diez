@@ -1,73 +1,29 @@
-<h1>Clientes</h1>
 
-<ul class="list-unstyled mt-4 clientes">
-  <li *ngFor="let cliente of clientes" class="mb-3">
-    <button [class.selected]="cliente === selectedCliente" type="button" (click)="onSelect(cliente)">
-      <span class="id">{{cliente.id}}</span>
-      <span class="nom">{{cliente.nom}}</span>
-    </button>
-  </li>
-</ul>
-
-<app-detalles-cliente [cliente]="selectedCliente"></app-detalles-cliente>
-
-<!-- PRUEBAS -->
-<!--<table class="table">
-  <thead>
-    <tr>
-      <th scope="col">ID</th>
-      <th scope="col">NOMBRE</th>
-      <th scope="col">USUARIO</th>
-      <th scope="col">PASSWORD</th>
-      <th scope="col">DIRECCIÓN</th>
-      <th scope="col">POBLACIÓN</th>
-      <th scope="col">NIF</th>
-      <th scope="col">PERSONA</th>
-      <th scope="col">TELÉFONO</th>
-      <th scope="col">EMAIL</th>
-      <th scope="col">POSICIÓN</th>
-      <th scope="col">FECALT</th>
-      <th scope="col">CCC</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr scope="row" *ngFor="let cliente of clientes">
-      <th>{{cliente.id}}</th>
-      <th>{{cliente.nom}}</th>
-      <th>{{cliente.usu}}</th>
-      <th>{{cliente.pas}}</th>
-      <th>{{cliente.dir}}</th>
-      <th>{{cliente.pob}}</th>
-      <th>{{cliente.nif}}</th>
-      <th>{{cliente.per}}</th>
-      <th>{{cliente.tel}}</th>
-      <th>{{cliente.mai}}</th>
-      <th>{{cliente.pos}}</th>
-      <th>{{cliente.fecalt}}</th>
-      <th>{{cliente.ccc}}</th>
-    </tr>
-  </tbody>
-</table>
-<div class="row">
-  <div class="col-6 p-5">
-    <h2>Clientes</h2>
-    <ul class="list-unstyled mt-4 clientes">
-      <li *ngFor="let cliente of clientes" class="mb-3">
-        <button [class.selected]="cliente === selectedCliente" type="button" (click)="onSelect(cliente)">
-          <span class="id">{{cliente.id}}</span>
-          <span class="nom">{{cliente.nom}}</span>
-        </button>
-      </li>
-
-    </ul>
-  </div>
-  <div class="col-6 p-5">
-    <div *ngIf="selectedCliente">
-      <h2>Detalles de {{selectedCliente.nom | uppercase}}</h2>
-      <div>ID: {{selectedCliente.id}}</div>
-      <div>PASSWORD: {{selectedCliente.pas}}</div>
-      <div>DIRECCIÓN: {{selectedCliente.dir}}</div>
-      <div>PROGRAMAS CONTRATADOS: </div>
+<div class="container-fluid mt-5">
+  <div class="row justify-content-center">
+    <div class="col-10">
+      <div class="row">
+        <div class="col-4 border border-info ps-5 pt-5">
+          <h1>Clientes</h1>
+          <div class="mt-5 w-75">
+            <input type="text" class="form-control" placeholder="Buscar.." [(ngModel)]="filterCliente" />
+          </div>
+          <ul class="list-unstyled mt-4 ml-5">
+            <li *ngFor="let cliente of clientes | filter:filterCliente"  class="mb-3 ml-5">
+              <!--<button [class.selected]="cliente === selectedCliente" type="button" (click)="onSelect(cliente)">-->
+              <button (click)="onSelect(cliente)" routerLink="/detalles/{{cliente.id}}" class="btn btn-info w-50" >
+                <span class="btn-id text-white fw-bolder fs-5">{{cliente.id}} -</span>
+                <span class="btn-nom text-white fw-bolder fs-5">{{cliente.nom}}</span>
+              </button>
+            </li>
+          </ul>
+        </div>
+        <div  *ngIf="selectedCliente" class="col-4 info-cliente ms-5 ps-5 pt-5">
+          <app-detalles-cliente [cliente]="selectedCliente"></app-detalles-cliente>
+          <app-programas [cliente]="selectedCliente"></app-programas>
+        </div>
+      </div>
     </div>
   </div>
-</div>-->
+</div>
+

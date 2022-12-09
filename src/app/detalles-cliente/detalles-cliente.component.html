@@ -1,8 +1,14 @@
+<h2>Detalles del cliente</h2>
 <div *ngIf="cliente">
-    <h2>{{cliente.nom | uppercase}}</h2>
+    <!--<a [title]="cliente.id + 'detalles'" [routerLink]="['/clientes', cliente.id]">{{cliente.id}}</a>-->
     <div>ID: {{cliente.id}}</div>
-   <div>
+    <div>Nombre: {{cliente.nom | uppercase}}</div>
+    <div>Nombre: {{cliente.mai}}</div>
+    <div>Dirección: {{cliente.dir}}</div>
+    <div>Población: {{cliente.pob}}</div>
+    <div>Teléfono: {{cliente.tel}}</div>
+   <!--<div>
     <label for="cliente-nom">Nombre:</label>
     <input id="cliente-nom" [(ngModel)]="cliente.nom" placeholder="nombre">
-   </div>
-</div>>
+   </div>-->
+</div>
